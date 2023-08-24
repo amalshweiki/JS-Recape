@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>if stament</title>
+  </head>
+  <body>
+    <script>
+      //       let age = prompt("Please enter your age");
+      //     if (age > 18) {
+      //       alert("enter");
+      //     } else {
+      //      alert("exit");
+      //    }
+      const grade1 = parseFloat(prompt("Please enter your grade1"));
+      const grade2 = parseFloat(prompt("Please enter your grade2"));
+      const grade3 = parseFloat(prompt("Please enter your grade3"));
+
+      let avg = (grade1 + grade2 + grade3) / 3;
+      let grade;
+      if (avg >= 90) {
+        grade = "A";
+      } else if (avg >= 80 && avg < 90) {
+        grade = "B";
+      } else if (avg >= 70 && avg < 80) {
+        grade = "c";
+      } else if (avg >= 60 && avg < 70) {
+        grade = "D";
+      } else {
+        grade = "F";
+      }
+      alert("Your grade= " + grade);
+    </script>
+  </body>
+</html>
