@@ -1,0 +1,36 @@
+Multiple Choice Questions:
+1. Which of the following variables have global scope?
+○ A) Variables declared inside a function without var, let, or const.
+○ B) Variables declared outside of any function. /// the correct answer
+○ C) Variables declared inside a function with var.
+○ D) Variables declared inside a block with let.
+/////////////////////////////////////////////////
+2.What will the following code output?
+let x = 1;
+function example() {
+let x = 2;
+console.log(x); ////2
+}
+example();
+○ A) Error
+○ B) 1
+○ C) 2 /// the correct answer
+○ D) Undefined
+//////////////////////////////////////////
+2. What does block scope mean?
+○ A) The variable is accessible anywhere in the code.
+○ B) The variable is only accessible within the function it is defined.
+○ C) The variable is only accessible within the block where it is defined. /// the correct answer
+○ D) The variable is not accessible anywhere.
+////////////////////////////////////
+True/False Questions:
+1. Variables declared with var are function-scoped.
+○ True / False //false
+2. Variables declared with let within a loop are accessible outside of the
+loop.
+○ True / False //false
+3. It is possible to redeclare a variable that was initially declared with let
+using var.
+○ True / False //false
+4. Global variables are accessible in any part of the code.
+○ True / False //true
