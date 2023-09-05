@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .charStyle {
+        margin: 5px 0;
+        padding: 5px;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+        background: #96c2d8;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>The Star Wars API</h1>
+    <div class="charStyle" id="charName"></div>
+
+    <script>
+      const URL = "https://swapi.dev/api/people";
+      const charContainer = document.getElementById("charName");
+      const charContainerHeight = document.getElementById("charHeight");
+      //const URL = "https://jsonplaceholder.typicode.com/todos";
+      const arrayOfchar = [];
+      for (let i = 1; i < 11; i++) {
+        fetch(`${URL}/${i}/`)
+          .then((response) => {
+            if (response.ok) {
+              console.log("response", response);
+              return response.json();
+            } else {
+              throw new Error(`error: ${response.status}`);
+            }
+          })
+          /*.then((res) => {
+        console.log(res);
+      })*/
+          .then((char) => {
+            arrayOfchar.push(char);
+            const newDiv = document.createElement("div");
+            newDiv.innerHTML = `Character ${i}: Name: ${arrayOfchar[i].name} ,
+             Height: ${arrayOfchar[i].height}, 
+             Hair Color: ${arrayOfchar[i].hair_color} `;
+            newDiv.classList.add("charStyle");
+            charContainer.appendChild(newDiv);
+          })
+          .catch((error) => console.log(error));
+      }
+
+      console.log(arrayOfchar);
+    </script>
+  </body>
+</html>

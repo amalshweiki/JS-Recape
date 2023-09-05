@@ -40,13 +40,7 @@
 
         fetch(`${URL}/${textTosearch}`)
           // fetch("https://api.github.com/users")
-          .then((response) => {
-            if (response.ok) {
-              return response.json();
-            } else {
-              throw new Error(`error: ${response.status}`);
-            }
-          })
+
           .then((user) => {
             const userDivImg = document.createElement("div");
             userDivImg.classList.add("item");
