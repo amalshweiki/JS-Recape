@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .item {
+        margin: 5px 0;
+        padding: 5px;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+        background: #bcb9e2;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="myform">
+      <input type="text" id="search" />
+      <button type="submit" id="searchButton" value="Search">Search</button>
+      <!-- <input type="submit" id="searchButton" value="Search" />-->
+    </form>
+    <div id="image"></div>
+    <div id="NameOfUser"></div>
+    <div id="NumberOfPublicRepos"></div>
+    <script>
+      const myform = document.getElementById("myform");
+
+      const searchButton = document.getElementById("searchButton");
+      const imageContainer = document.getElementById("image");
+      const NameOfUserContainer = document.getElementById("NameOfUser");
+      const NumberOfPublicReposContainer = document.getElementById(
+        "NumberOfPublicRepos"
+      );
+      const URL = "https://api.github.com/users";
+      myform.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const textTosearch = document.getElementById("search").value;
+
+        fetch(`${URL}/${textTosearch}`)
+          // fetch("https://api.github.com/users")
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error(`error: ${response.status}`);
+            }
+          })
+          .then((user) => {
+            const userDivImg = document.createElement("div");
+            userDivImg.classList.add("item");
+            userDivImg.innerHTML = `<img src="${user.avatar_url}"/>`;
+            imageContainer.appendChild(userDivImg);
+            const userDiv = document.createElement("div");
+            userDiv.classList.add("item");
+            userDiv.innerHTML = `${user.login} `;
+            NameOfUserContainer.appendChild(userDiv);
+            const userDivrep = document.createElement("div");
+            userDivrep.classList.add("item");
+            userDivrep.innerHTML = `${user.public_repos} `;
+            NumberOfPublicReposContainer.appendChild(userDivrep);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      });
+    </script>
+  </body>
+</html>
